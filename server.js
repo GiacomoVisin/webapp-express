@@ -1,15 +1,12 @@
 const express = require(`express`)
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.API_SERVER_PORT || 3000
+const router = require(`./router/routes`)
 
 app.listen(port, () => {
     console.log(`The server is running on port http://localhost:${port}`)
 })
 
-
-app.get(`/`, (req, res) => {
-    res.send(`Hello World!`)
-})
 
 
 function errorHandler(err, req, res, next) {
@@ -24,9 +21,10 @@ function endpointNotFound(req, res, next){
 }
 
 
-app.use(endpointNotFound)
-app.use(errorHandler)
-
-
 
 app.use(express.json())
+app.use(`/`,router)
+
+
+app.use(endpointNotFound)
+app.use(errorHandler)
