@@ -8,7 +8,7 @@ function index(req, res) {
             res.status(500).json({ error: "Internal Server Error" })
             return
         }
-        const film = results[0]
+        res.json(results)
     })
 }
 
