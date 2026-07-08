@@ -5,7 +5,7 @@ const controller = require("../controllers/controller")
 
 router.get("/index", controller.index)
 
-router.get("/show/:id", controller.show)
+router.get("/index/:id", controller.indexID)
 
 
 

@@ -12,7 +12,7 @@ function index(req, res) {
     })
 }
 
-function show(req, res) {
+function indexID(req, res) {
     const { id } = req.params;
 
 
@@ -43,4 +43,4 @@ function show(req, res) {
     });
 }
 
-module.exports = { index, show }
+module.exports = { index, indexID }
