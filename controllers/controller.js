@@ -64,5 +64,21 @@ function addReview(req, res) {
     })
 }
 
+function loadMovie (req,res) {
+    const sql = "INSERT INTO movies (title, director, genre, abstract, image) VALUES (?, ?, ?, ?, ?)"
+    const { title, director, genre, abstract, image } = req.body;
+    connection.query(sql, [title, director, genre, abstract, image], (err, results) => {
+        if (err) {
+            console.error("Error in the execution of the insert movie query:", err);
+            res.status(500).json({ error: "Internal Server Error" });
+            return;
+        }
+        res.status(201).json({ 
+            message: "Movie added successfully",
+            results: results 
+        });
+    });
+}    
 
-module.exports = { index, indexID, addReview }
+
+module.exports = { index, indexID, addReview, loadMovie }

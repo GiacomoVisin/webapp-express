@@ -9,4 +9,6 @@ router.get("/index/:id", controller.indexID)
 
 router.post("/addReview/:id", controller.addReview)
 
+router.post("/loadMovie", controller.loadMovie)
+
 module.exports = router
